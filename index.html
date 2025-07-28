@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فندق برج المرتضى</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #e8c873;
+            --gold-dark: #b89528;
+            --dark-blue: #0a192f;
+            --light-blue: #172a45;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Tajawal', Arial, sans-serif;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('Reciption.jpeg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .main-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-title {
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            font-size: 3.5rem;
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+            color: var(--gold);
+            animation: fadeIn 1.5s ease;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+            animation: slideUp 1s ease;
+        }
+
+        .logo-section img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.6));
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section img:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .logo-section h2 {
+            font-size: 2rem;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            color: var(--gold);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .logo-section h2::before,
+        .logo-section h2::after {
+            content: '✻';
+            color: var(--gold);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 3rem 0;
+            padding: 0 1rem;
+            animation: fadeIn 2s ease;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .nav-button {
+            padding: 18px 25px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark-blue);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-button:hover::before {
+            opacity: 1;
+        }
+
+        .nav-button i {
+            font-size: 1.4rem;
+        }
+
+        .address {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            font-size: 1.2rem;
+            margin-top: auto;
+            border-top: 2px solid var(--gold);
+            animation: fadeIn 2.5s ease;
+            line-height: 1.8;
+            width: 100%;
+        }
+
+        .address i {
+            color: var(--gold);
+            margin-left: 8px;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .back-button {
+            padding: 12px 30px;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -50px;
+            right: 10px;
+            color: var(--white);
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(212, 175, 55, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+            transform: rotate(90deg);
+        }
+
+        .rooms-selection {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+
+        .rooms-title {
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .rooms-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .room-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .room-btn {
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark-blue);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .room-btn:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .room-btn i {
+            font-size: 1.2rem;
+        }
+
+        video {
+            width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .location-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .location-section h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .location-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .location-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        .close-rooms-btn {
+            margin-top: 30px;
+            padding: 12px 35px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-rooms-btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 992px) {
+            .nav-buttons {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+            
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .logo-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+                margin: 1.2rem 0;
+            }
+
+            .logo-section img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo-section h2 {
+                font-size: 1.6rem;
+                padding: 8px 20px;
+            }
+
+            .nav-button {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+
+            .room-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .video-container {
+                width: 95%;
+            }
+
+            .location-section {
+                padding: 20px;
+            }
+
+            .location-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .location-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .room-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .rooms-title {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .address {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <h1 class="main-title">فندق برج المرتضى</h1>
+
+        <div class="logo-section">
+            <img src="logo.jpg" alt="شعار فندق برج المرتضى">
+            <h2>فندق برج المرتضى</h2>
+        
+
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="showVideo('building')">
+                <i class="fas fa-building"></i> بناية المرتضى
+            </button>
+            <button class="nav-button" onclick="showVideo('hall')">
+                <i class="fas fa-hotel"></i> الصالة الرئيسية
+            </button>
+            <button class="nav-button" onclick="showVideo('husseiniya')">
+                <i class="fas fa-mosque"></i> الحسينية
+            </button>
+            <button class="nav-button" onclick="showVideo('restaurant1')">
+                <i class="fas fa-utensils"></i> المطعم الأول
+            </button>
+            <button class="nav-button" onclick="showVideo('restaurant2')">
+                <i class="fas fa-utensils"></i> المطعم الثاني
+            </button>
+            <button class="nav-button" onclick="showRoomsSelection()">
+                <i class="fas fa-bed"></i> الغرف
+            </button>
+        </div>
+    </div>
+
+    <div class="address">
+        <i class="fas fa-map-marker-alt"></i> العنوان: العراق - كربلاء المقدسة - شارع العلقمي - مقابل مجمع علي الهادي (ع)<br>
+        <i class="fas fa-phone"></i> 9990 111 783 964+ /  9990 111 773 964+
+    </div>
+
+    <!-- مشغل الفيديو -->
+    <div id="videoModal" class="video-modal">
+        <span class="close-btn" onclick="closeVideo()">&times;</span>
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                المتصفح الخاص بك لا يدعم تشغيل الفيديو
+            </video>
+        </div>
+        <div class="video-controls">
+            <button class="back-button" onclick="backToRooms()">
+                <i class="fas fa-arrow-left"></i> الرجوع إلى الغرف
+            </button>
+        </div>
+    </div>
+
+    <!-- اختيار الغرف -->
+    <div id="roomsSelection" class="rooms-selection">
+        <h2 class="rooms-title">اختر غرفة لعرض الفيديو</h2>
+        <div class="room-options">
+            <button class="room-btn" onclick="showRoomVideo('room1.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 1
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room2.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 2
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room3.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 3
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room4.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 4
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room5.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 5
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room6.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 6
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room7.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 7
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room8.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 8
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room9.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 9
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room10.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 10
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('room11.mp4')">
+                <i class="fas fa-door-open"></i> الغرفة 11
+            </button>
+            <button class="room-btn" onclick="showRoomVideo('floor.mp4')">
+                <i class="fas fa-building"></i> الطوابق
+            </button>
+        </div>
+        <button class="close-rooms-btn" onclick="closeRoomsSelection()">
+            <i class="fas fa-times"></i> إغلاق
+        </button>
+    </div>
+
+    <script>
+        // عناصر الفيديو - يجب استبدالها بأسماء ملفات الفيديو الخاصة بك
+        const videos = {
+            'building': 'building.mp4',
+            'hall': 'hall.mp4',
+            'husseiniya': 'husseiniya.mp4',
+            'restaurant1': 'restaurant1.mp4',
+            'restaurant2': 'restaurant2.mp4'
+        };
+
+        let currentView = ''; // 'main' or 'rooms'
+
+        function showVideo(type) {
+            currentView = 'main';
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = videos[type];
+            videoPlayer.load();
+            document.getElementById('videoModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                videoPlayer.play().catch(e => console.log('التشغيل التلقائي غير مسموح:', e));
+            }, 500);
+        }
+
+        function closeVideo() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.pause();
+            videoPlayer.src = '';
+            document.getElementById('videoModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showRoomsSelection() {
+            currentView = 'rooms';
+            document.getElementById('roomsSelection').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRoomsSelection() {
+            document.getElementById('roomsSelection').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showRoomVideo(videoFile) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = videoFile;
+            videoPlayer.load();
+            document.getElementById('roomsSelection').style.display = 'none';
+            document.getElementById('videoModal').style.display = 'flex';
+
+            setTimeout(() => {
+                videoPlayer.play().catch(e => console.log('التشغيل التلقائي غير مسموح:', e));
+            }, 500);
+        }
+
+        function backToRooms() {
+            if (currentView === 'rooms') {
+                closeVideo();
+                showRoomsSelection();
+            } else {
+                closeVideo();
+            }
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeVideo();
+                closeRoomsSelection();
+            }
+        });
+
+        // Detect mobile devices
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            document.body.style.backgroundAttachment = "scroll";
+        }
+
+        // Add animation to buttons on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.nav-button, .room-btn');
+            buttons.forEach((button, index) => {
+                button.style.animation = `fadeIn 0.5s ease ${index * 0.1}s forwards`;
+                button.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+
+</html>
